@@ -1,10 +1,12 @@
 # Merges two CSVs using first column as primary key (id).
 # Assumes columns are unique to each input CSV.
+# Usage: ruby merge.rb file1.csv [ file2.csv ... ]
 
 require "csv"
 
 # Merged data as a hash of hashes.
-# Keys are ids, values are hashes of values keyed on column names.
+# Keys are ids, values are hashes of values keyed on column names,
+# i.e. merged = { id1 : { col1 : val1, col2 : val2 } id2 : ... }
 merged = {}
 
 # Header label for primary key.
