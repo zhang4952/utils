@@ -32,6 +32,8 @@ suffixes = [
 
 query = {
   "dc.degree.name" => [
+    "Master of Science (M.S.) in Geosciences",
+    "Doctor of Philosophy (Ph. D.) in Geosciences",
     "Doctor of Philosophy (Ph. D.) in Water Resources Engineering",
     "Doctor of Philosophy (Ph. D.) in Water Resources Science",
     "Master of Science (M.S.) in Water Resources Engineering",
