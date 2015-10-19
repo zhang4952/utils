@@ -23,31 +23,45 @@ columns = [
 
 suffixes = [
   "",
-  "[]",
   "[en]",
   "[en_US]",
   "[en_us]",
+  "[]",
   "[*]"
   ]
 
 query = {
   "dc.degree.name" => [
     "Doctor of Philosophy (Ph. D.) in Water Resources Engineering",
+    "Doctor of Philosophy (Ph. D.) in Water Resources Science",
     "Master of Science (M.S.) in Water Resources Engineering",
     "Master of Science (M.S.) in Water Resource Engineering",
     "Master of Science (M.S.) in Water Resources Policy and Management",
+    "Master of Science (M.S.) in Water Resources Policy & Management",
+    "Master of Science (M.S.) in Water Resource Policy and Management",
     "Master of Science (M.S.) in Water Resources Science",
+    "Master of Science (M.S.) in Water Resource Science",
     "Doctor of Philosophy (Ph. D.) in Geography",
     "Master of Science (M.S.) in Geography",
     "Doctor of Philosophy (Ph. D.) in Geology",
     "Master of Science (M.S.) in Geology",
+    "Master of Science (MS) in Geology",
     "Master of Science (M.S.) in Marine Resource Management",
+    "Master of Science (MS) in Marine Resource Management",
     "Doctor of Philosophy (Ph. D.) in Oceanography",
+    "Doctor of Philosophy (Ph. D.)in Oceanography",
     "Master of Science (M.S.) in Oceanography",
+    "Master of Science (MS) in Oceanography",
+    "Master of Arts (M.A.) in Oceanography",
     "Doctor of Philosophy (Ph. D.) in Atmospheric Sciences",
     "Master of Science (M.S.) in Atmospheric Sciences",
+    "Master of Science (M.S.) in Atmospheric Science",
+    "Master of Science (MS) in Atmospheric Sciences",
     "Doctor of Philosophy (Ph. D.) in Ocean, Earth, and Atmospheric Sciences",
-    "Master of Science (M.S.) in Ocean, Earth, and Atmospheric Sciences"
+    "Doctor of Philosophy (Ph. D.) in Ocean, Earth, and Atmospheric Science",
+    "Master of Science (M.S.) in Ocean, Earth, and Atmospheric Sciences",
+    "Master of Science (M.S.) in Ocean, Earth and Atmospheric Sciences",
+    "Master of Science (M.S.) in Ocean, Earth, and Atmospheric Science"
     ]
   }
 
