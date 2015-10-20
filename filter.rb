@@ -1,80 +1,28 @@
 # Filters a CSV, including only the specified columns
 # and only rows that match the query. The query gives
 # the list of desired values under a given column (key).
-# Usage: ruby filter.rb inputfile outputfile
+# Usage: ruby filter.rb queryfile inputfile outputfile
+
+if ARGV.length != 3
+  abort "Usage: ruby filter.rb queryfile inputfile outputfile"
+end
 
 require "csv"
 
-input = ARGV[0]
-output = ARGV[1]
+query = ARGV[0]
+input = ARGV[1]
+output = ARGV[2]
 
-columns = [
-  "dc.creator",
-  "dc.title",
-  "dc.contributor.advisor",
-  "dc.contributor.committeemember",
-  "dc.degree.discipline",
-  "dc.degree.level",
-  "dc.degree.name",
-  "dc.description",
-  "dc.date.copyright",
-  "dc.identifier.uri",
-  ]
-
-suffixes = [
-  "",
-  "[en]",
-  "[en_US]",
-  "[en_us]",
-  "[]",
-  "[*]"
-  ]
-
-query = {
-  "dc.degree.name" => [
-    "Master of Science (M.S.) in Geosciences",
-    "Doctor of Philosophy (Ph. D.) in Geosciences",
-    "Doctor of Philosophy (Ph. D.) in Water Resources Engineering",
-    "Doctor of Philosophy (Ph. D.) in Water Resources Science",
-    "Master of Science (M.S.) in Water Resources Engineering",
-    "Master of Science (M.S.) in Water Resource Engineering",
-    "Master of Science (M.S.) in Water Resources Policy and Management",
-    "Master of Science (M.S.) in Water Resources Policy & Management",
-    "Master of Science (M.S.) in Water Resource Policy and Management",
-    "Master of Science (M.S.) in Water Resources Science",
-    "Master of Science (M.S.) in Water Resource Science",
-    "Doctor of Philosophy (Ph. D.) in Geography",
-    "Master of Science (M.S.) in Geography",
-    "Doctor of Philosophy (Ph. D.) in Geology",
-    "Master of Science (M.S.) in Geology",
-    "Master of Science (MS) in Geology",
-    "Master of Science (M.S.) in Marine Resource Management",
-    "Master of Science (MS) in Marine Resource Management",
-    "Doctor of Philosophy (Ph. D.) in Oceanography",
-    "Doctor of Philosophy (Ph. D.)in Oceanography",
-    "Master of Science (M.S.) in Oceanography",
-    "Master of Science (MS) in Oceanography",
-    "Master of Arts (M.A.) in Oceanography",
-    "Doctor of Philosophy (Ph. D.) in Atmospheric Sciences",
-    "Master of Science (M.S.) in Atmospheric Sciences",
-    "Master of Science (M.S.) in Atmospheric Science",
-    "Master of Science (MS) in Atmospheric Sciences",
-    "Doctor of Philosophy (Ph. D.) in Ocean, Earth, and Atmospheric Sciences",
-    "Doctor of Philosophy (Ph. D.) in Ocean, Earth, and Atmospheric Science",
-    "Master of Science (M.S.) in Ocean, Earth, and Atmospheric Sciences",
-    "Master of Science (M.S.) in Ocean, Earth and Atmospheric Sciences",
-    "Master of Science (M.S.) in Ocean, Earth, and Atmospheric Science"
-    ]
-  }
+require query
 
 CSV.open(output, "w") do |out|
-  out << columns
+  out << $columns
   CSV.foreach(input, headers: true) do |row|
     includerow = true
-    for key in query.keys
+    for key in $query.keys
       satisfies = false
-      for suffix in suffixes
-        if !row[key + suffix].nil? && query[key].include?(row[key + suffix])
+      for suffix in $suffixes
+        if !row[key + suffix].nil? && $query[key].include?(row[key + suffix])
           satisfies = true
         end
       end
@@ -85,8 +33,8 @@ CSV.open(output, "w") do |out|
     if includerow
       values = []
       found = nil
-      for column in columns
-        for suffix in suffixes
+      for column in $columns
+        for suffix in $suffixes
           if !row[column + suffix].nil?
             found = row[column + suffix]
             break
