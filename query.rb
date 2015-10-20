@@ -30,6 +30,8 @@ $query = {
     "Master of Science (M.S.) in Water Resource Policy and Management",
     "Master of Science (M.S.) in Water Resources Science",
     "Master of Science (M.S.) in Water Resource Science",
+    "Master of Science (M.S.) in Water Resource Policy and\n\nManagement",
+    "Master of Science (M.S.) in Water Resources Policy and\n\nManagement",
     "Doctor of Philosophy (Ph. D.) in Geography",
     "Master of Science (M.S.) in Geography",
     "Doctor of Philosophy (Ph. D.) in Geology",
