@@ -13,31 +13,39 @@ query = ARGV[0]
 input = ARGV[1]
 output = ARGV[2]
 
-require query
+require_relative query
 
 CSV.open(output, "w") do |out|
   out << $columns
   CSV.foreach(input, headers: true) do |row|
     includerow = true
-    for key in $query.keys
+    for column in $query.keys
       satisfies = false
       for suffix in $suffixes
-        if !row[key + suffix].nil? && $query[key].include?(row[key + suffix])
-          satisfies = true
+        unless row[column + suffix].nil?
+          for desired in $query[column]
+            if row[column + suffix].include?(desired)
+              satisfies = true
+              break
+            end
+          end
         end
       end
-      if !satisfies
+      unless satisfies
         includerow = false
       end
     end
     if includerow
       values = []
-      found = nil
       for column in $columns
+      	found = nil
         for suffix in $suffixes
-          if !row[column + suffix].nil?
-            found = row[column + suffix]
-            break
+          unless row[column + suffix].nil? || row[column + suffix].empty?
+            if !found
+              found = row[column + suffix]
+            else
+              found += "||" + row[column + suffix]
+            end
           end
         end
         values << found
