@@ -14,9 +14,9 @@ $columns = [
   "dc.identifier.uri"
   ]
 
-# Include rows from the input where each of the columns
-# named here as a key has one of the values listed in
-# the array associated with the key (column)
+# Here the keys are names of columns for which we want to
+# match one of the listed values, and the listed values need
+# only be a substring of the value under consideration
 $query = {
   "dc.degree.name" => [
     "Master of Science (M.S.) in Geosciences",
@@ -58,9 +58,9 @@ $query = {
   }
 
 # For each column name, look in column names formed by
-# adding these suffixes, and for the output, take the
-# first non-empty column, in the top-to-bottom order
-# given here
+# adding these suffixes, and in the ouput, if there are
+# multiple versions of a column with non-empty values,
+# append them with || as separator
 $suffixes = [
   "",
   "[en]",
